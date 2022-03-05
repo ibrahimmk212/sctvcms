@@ -1,11 +1,16 @@
 <?php get_header(); ?>
-<div class="mvp-main-blog-wrap left relative mvp-main-blog-marg">
+<div class="mvp-main-blog-wrap left relative">
 	<div class="mvp-main-box">
 		<div class="mvp-main-blog-cont left relative">
+			<?php if( is_tag() ) { ?>
+				<header id="mvp-post-head" class="left relative">
+					<h1 class="mvp-post-title left entry-title" itemprop="headline"><?php esc_html_e( 'All posts tagged', 'zox-news' ); ?> "<?php single_tag_title(); ?>"</h1>
+				</header>
+			<?php } ?>
 			<div class="mvp-main-blog-out left relative">
 				<div class="mvp-main-blog-in">
 					<div class="mvp-main-blog-body left relative">
-						<?php if(get_option('mvp_blog_layout') == '1' ) { ?>
+						<?php if(get_option('mvp_arch_layout') == '1' ) { ?>
 							<ul class="mvp-blog-story-list-col left relative infinite-content">
 								<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 									<li class="mvp-blog-story-col left relative infinite-post">
@@ -31,7 +36,7 @@
 															<?php if ( is_sticky() ) { ?>
 																<span class="mvp-cd-cat left relative sticky"><?php esc_html_e( 'Sticky Post', 'zox-news' ); ?></span><span class="mvp-cd-date left relative"><?php printf( esc_html__( '%s ago', 'zox-news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ); ?></span>
 															<?php } else { ?>
-																<span class="mvp-cd-cat left relative"><?php $category = get_the_category(); echo esc_html( $category[0]->cat_name ); ?></span><span class="mvp-cd-date left relative"><?php printf( esc_html__( '%s ago', 'zox-news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ); ?></span>
+																<span class="mvp-cd-cat left relative"><?php $category = get_the_category(); if (isset($category)) { echo esc_html( $category[0]->cat_name ); } ?></span><span class="mvp-cd-date left relative"><?php printf( esc_html__( '%s ago', 'zox-news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ); ?></span>
 															<?php } ?>
 														</div><!--mvp-cat-date-wrap-->
 														<h2><?php the_title(); ?></h2>
@@ -45,7 +50,7 @@
 													<?php if ( is_sticky() ) { ?>
 														<span class="mvp-cd-cat left relative sticky"><?php esc_html_e( 'Sticky Post', 'zox-news' ); ?></span><span class="mvp-cd-date left relative"><?php printf( esc_html__( '%s ago', 'zox-news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ); ?></span>
 													<?php } else { ?>
-														<span class="mvp-cd-cat left relative"><?php $category = get_the_category(); echo esc_html( $category[0]->cat_name ); ?></span><span class="mvp-cd-date left relative"><?php printf( esc_html__( '%s ago', 'zox-news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ); ?></span>
+														<span class="mvp-cd-cat left relative"><?php $category = get_the_category(); if (isset($category)) { echo esc_html( $category[0]->cat_name ); } ?></span><span class="mvp-cd-date left relative"><?php printf( esc_html__( '%s ago', 'zox-news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ); ?></span>
 													<?php } ?>
 												</div><!--mvp-cat-date-wrap-->
 												<h2><?php the_title(); ?></h2>
@@ -96,7 +101,7 @@
 													<?php if ( is_sticky() ) { ?>
 														<span class="mvp-cd-cat left relative sticky"><?php esc_html_e( 'Sticky Post', 'zox-news' ); ?></span><span class="mvp-cd-date left relative"><?php printf( esc_html__( '%s ago', 'zox-news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ); ?></span>
 													<?php } else { ?>
-														<span class="mvp-cd-cat left relative"><?php $category = get_the_category(); echo esc_html( $category[0]->cat_name ); ?></span><span class="mvp-cd-date left relative"><?php printf( esc_html__( '%s ago', 'zox-news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ); ?></span>
+														<span class="mvp-cd-cat left relative"><?php $category = get_the_category(); if (isset($category)) { echo esc_html( $category[0]->cat_name ); } ?></span><span class="mvp-cd-date left relative"><?php printf( esc_html__( '%s ago', 'zox-news' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) ); ?></span>
 													<?php } ?>
 												</div><!--mvp-cat-date-wrap-->
 												<h2><?php the_title(); ?></h2>
